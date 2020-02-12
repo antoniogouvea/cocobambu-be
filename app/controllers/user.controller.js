@@ -8,37 +8,23 @@ class UserController {
     const { body } = req
 
     try {
-      const count = await callService.count({ atendente: body.atendente, status: 1 })
+      let username = body.username
+      let password = body.password
+      let where = { username: username }
 
-      if (count)
-        throw new Error('Atendente ocupado')
+      let resposta = await userService.findOne(where)
+      if (resposta && resposta.password === password)
+        return res.status(200).json('Usuário logado')
 
-      const call = await callService.insert(body)
-      await attendantService.update({ nome: body.atendente }, { status: 1 })
+      return res.status(401).json('Usuário ou senha incorretos')
 
-      return res.json(call)
     } catch (error) {
-      console.log(error)
-      res.status(500).json({ message: '' })
+      console.error(error)
+      res.status(500).json({
+        message: ''
+      })
     }
   }
-
-
-
-  find(req, res) {
-    let { where = '{}', fields = '{}' } = req.query
-    
-    where = JSON.parse(where)
-    fields = JSON.parse(fields)
-
-    console.log('=======================================================')
-    console.log(`CallController :: find :: ${JSON.stringify(where)}`)
-
-    callService.find(where, fields)
-      .then(data => res.json(data))
-      .catch(error => res.error(error))
-  }
-
 }
 
 module.exports = UserController

@@ -3,7 +3,7 @@ const user = new UserController()
 
 module.exports = app => {
 
-  app.post('/user/login', user.login)
+  app.post('/api/user/login', user.login)
   // app.post('/call/end', call.end)
   // app.get('/call', call.find)
 

@@ -10,11 +10,11 @@ class UserService {
   //   return call.save()
   // }
 
-  find(query, fields) {
-    return User.find(query, fields)
+  find(query) {
+    return User.find(query)
   }
 
-  findOne(query = {}, fields = {}) {
+  findOne(query, fields) {
     return User.findOne(query, fields)
   }
 

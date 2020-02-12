@@ -1,0 +1,64 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Esse é o swagger para uso e documentação da API ",
+        "version": "1.0.0",
+        "title": "Swagger Desafio Coco Bambu",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "antonio.coutinho.gouvea@gmail.com"
+        },
+        "host": "http://localhost:8080/"
+    },
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/user/login": {
+            "post": {
+                "tags": [
+                    "login"
+                ],
+                "summary": "Endpoint para login do usuario",
+                "operationId": "login",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Objeto para login",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "example": "teste"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "teste123"
+                }
+            }
+        }
+    }
+}
