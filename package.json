@@ -1,0 +1,36 @@
+{
+  "name": "cocobambu-be",
+  "version": "1.0.0",
+  "description": "Projeto de Backend para o desafio cocobambu",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node -r ./dotenv/config app/index.js",
+    "dev": "NODE_ENV=dev nodemon -r ./dotenv/config app/index.js",
+    "debug": "NODE_ENV=dev node inspect -r ./dotenv/config app/index.js",
+    "test": "NODE_ENV=test nyc --reporter=text ./node_modules/.bin/mocha  \"./app/tests/*.*.spec.js\" --timeout 6000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniogouvea/cocobambu-be.git"
+  },
+  "author": "Antonio Carlos Coutinho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoniogouvea/cocobambu-be/issues"
+  },
+  "homepage": "https://github.com/antoniogouvea/cocobambu-be#readme",
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mocha": "^7.0.1",
+    "mongoose": "^5.8.11",
+    "nyc": "^15.0.0",
+    "sinon": "^8.1.1"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
