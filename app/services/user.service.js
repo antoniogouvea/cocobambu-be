@@ -5,10 +5,10 @@ class UserService {
 
   constructor() { }
 
-  // insert(data) {
-  //   let call = new Call(data)
-  //   return call.save()
-  // }
+  insert(data) {
+    let user = new User(data)
+    return user.save()
+  }
 
   find(query) {
     return User.find(query)
