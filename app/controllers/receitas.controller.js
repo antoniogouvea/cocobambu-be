@@ -13,6 +13,16 @@ class ReceitasController {
                     _id: req.query.id
                 }
 
+            if (req.query.nome) {
+                let nome = req.query.nome
+                query = {
+                    nome: {
+                        $regex: nome,
+                        $options: 'i'
+                    }
+                }
+            }
+
             let resposta = await receitasService.find(query)
             res.status(200).json(resposta)
         } catch (error) {
