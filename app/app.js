@@ -3,7 +3,9 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const errorHandler = require('./middlewares/errorHandler')
-const { color } = require('./constants')
+const {
+  color
+} = require('./constants')
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
@@ -20,7 +22,7 @@ class App {
 
     files.forEach(file => {
       console.log(color.GREEN, file)
-      
+
       if (passApp) require(`${__dirname}/${path}/${file}`)(this.app)
       else require(`${__dirname}/${path}/${file}`)
     })
@@ -48,6 +50,22 @@ class App {
     this.requireDirectory('routes', true)
   }
 
+  async insertData() {
+    const ReceitasService = require('./services/receitas.service');
+    const UserService = require('./services/user.service')
+    const receitasService = new ReceitasService()
+    const userService = new UserService()
+    const data = require('../dotenv/data')
+    try {
+      data.receitas.forEach(el =>{  receitasService.insert(el)
+      })
+    await userService.insert(data.user)
+    } catch (error) {
+      console.log(error)
+    }
+    
+
+  }
 
 
   run() {
@@ -55,6 +73,7 @@ class App {
     this.loadModels()
     this.loadControllers()
     this.loadRoutes()
+    this.insertData()
   }
 
 }

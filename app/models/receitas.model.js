@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const ReceitasSchema = new Schema({
-  _id: { type: mongoose.ObjectId },
   nome: { type: String },
   descricao: { type: String },
   ingredientes: { type: Array },

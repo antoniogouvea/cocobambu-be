@@ -6,7 +6,7 @@ class ReceitasService {
   constructor() { }
 
   insert(data) {
-    let receita = new Call(data)
+    let receita = new Receitas(data)
     return receita.save()
   }
 
