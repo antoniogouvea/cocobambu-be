@@ -13,6 +13,8 @@ $ npm run dev
   - O banco é MongoDB
   
   ````
-  {username:"teste",
-  password:"teste123"}
+  {
+  username:"teste",
+  password:"teste123"
+  }
   ````
