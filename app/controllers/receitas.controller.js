@@ -6,11 +6,13 @@ class ReceitasController {
 
     async getReceitas(req, res) {
         try {
-            let query
-            if (req.query.id) 
-                query = { _id: req.query.id }
-            
-            query = req.query
+            let query = req.query
+
+            if (req.query.id)
+                query = {
+                    _id: req.query.id
+                }
+
             let resposta = await receitasService.find(query)
             res.status(200).json(resposta)
         } catch (error) {
