@@ -11,3 +11,8 @@ $ npm run dev
   - Todas as especificações do desafio foram atendidas
   - Após levantar o projeto ele adiciona o usuário e todas as receitas no banco de dados
   - O banco é MongoDB
+  
+  ````
+  {username:"teste",
+  password:"teste123"}
+  ````
